@@ -1,5 +1,6 @@
 % i. Open Loop system characterization, identification and representation.
 
+% State Equations 
 % SISO, Location #1, Linearized Actuator, Linearized Sensor
 % p.133 3a)
 A = [0 1; 0 0];
@@ -14,12 +15,8 @@ C = [1 0];
 % det(sI - A) = 0
 poles = eig(A)
 
-% Create state-space model 
-sys = ss(A,B,C,0);
-
 % Provide a non-zero initial condition
-% to the system to observe what happens 
-% to the system. 
+% to the system to observe what happens. 
 
 % Specify the time samples for the simulation
 % t = 0:dt:Tfinal
@@ -33,8 +30,8 @@ u = zeros(size(t));
 % initial conditions. 
 x0 = [0.01 0];
 
-% Create Jordan form of matrix A
-JA = jordan(A)
+% Create state-space model 
+sys = ss(A,B,C,0);
 
 % Convert state-space representation to transfer function
 [num,denom]= ss2tf(A,B,C,0)
@@ -52,7 +49,11 @@ title('Open-Loop Response to Non-Zero Initial Condition');
 xlabel('Time (sec)');
 ylabel('Magnet Position (cm)');
 
-% Compute the observability matrix 
+
+% Create Jordan form of matrix A
+JA = jordan(A)
+
+% Compute the observability matrix
 Ob = obsv(A,C)
 % Determine the number of unobservable states
 unob = length(A)-rank(Ob)
@@ -74,10 +75,11 @@ title('Root Locus of Open-Loop Linearized Magnetic Levitation System');
 
 figure(3)
 subplot(2,1,1)
-%sisotool(sys)
 step(sys1)
 title('Step Reponse of Open-Loop Linearized Magnetic Levitation System');
 subplot(2,1,2)
 impulse(sys1)
 title('Impulse Reponse of Open-Loop Linearized Magnetic Levitation System');
+
+%sisotool(sys)
 
