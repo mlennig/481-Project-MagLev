@@ -1,4 +1,13 @@
- % Experiment 10 - Full Order and Reduced Order Observer Design
+% Full State Feedback
+% 1. Design Criteria
+%   a. Transient Design Specification
+%   b. Steady-state Design Specification 
+% 2. Step Response
+% 3. Square Wave Response
+% 4. Sinusoidal Response 
+% 5. Transfer Function of Controller 
+
+% Experiment 10 - Full Order and Reduced Order Observer Design
  % By Siddharth Kaul
  %--------------------------------------------------------------------------
  %
