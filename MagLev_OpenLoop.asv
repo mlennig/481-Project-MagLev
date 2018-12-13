@@ -54,10 +54,10 @@ ylabel('Magnet Position (cm)');
 
 % Compute the observability matrix 
 Ob = obsv(A,C)
+
+
 % Determine the number of unobservable states
 unob = length(A)-rank(Ob)
-
-m = ssest(data,n,'Form','canonical')
 
 % Compute the controllability matrix 
 Co = ctrb(A,B)

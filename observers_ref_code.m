@@ -1,48 +1,40 @@
+%--------------------------------------------------------------------------
  % Experiment 10 - Full Order and Reduced Order Observer Design
  % By Siddharth Kaul
  %--------------------------------------------------------------------------
  %
  % Given -------------------------------------------------------------------
- num = [0 0 826];
- den = [1 0 0];
+ num = [1 4];
+ den = [1 8 17 10];
  sys = tf(num,den);
- desiredPoles = [-100 -10];
+ desiredPoles = [-100 -10 -10];
  disp('Given Transfer Function: ');
  sys
  % Now finding whether observable or not -----------------------------------
- [MatrixA,MatrixB,MatrixC,MatrixD] = tf2ss(num,den)
- mysys = canon(ss(MatrixA,MatrixB,MatrixC,MatrixD),'companion')
- 
+ [MatrixA,MatrixB,MatrixC,MatrixD] = tf2ss(num,den);
+ mysys = canon(ss(MatrixA,MatrixB,MatrixC,MatrixD),'companion');
  % If observable then only continue other wise no oberver design possible --
 if(rank(MatrixA)==rank(mysys.A))
 disp('System is Observable');
-
 % Observer Design Possible --------------------------------------------
 observerGain = acker(MatrixA.',MatrixC.',desiredPoles.').';
 disp('Observer Gain Matrix');
 disp(observerGain);
-
 % New System with observer --------------------------------------------
 newMatrixA = MatrixA - (observerGain*MatrixC);
-
 newMatrixB = eye(rank(MatrixA));
 newMatrixC = eye(rank(MatrixA));
 newMatrixD = eye(rank(MatrixA));
-
 mysys = ss(newMatrixA,newMatrixB,newMatrixC,newMatrixD);
 mysys;
-
 timeT = 0:.1:2;
-
 initialX = [1 0 0];
-
 x = initial(mysys, initialX,timeT);
-x1 = [1 0]*x';
-x2 = [0 1]*x';
-
-
+x1 = [1 0 0]*x';
+x2 = [0 1 0]*x';
+x3 = [0 0 1]*x';
 subplot(3,1,1);
-plot(timeT,x1,'r',timeT,x2,'g');
+plot(timeT,x1,'r',timeT,x2,'g',timeT,x3,'b');
 title('Response to initial Condition of State Variables Observer');
 xlabel('Time -->');
 ylabel('Magnitude -->');
@@ -60,7 +52,7 @@ end
 %--------------------------------------------------------------------------
 % So ----------------------------------------------------------------------
 % we already have MatrixA -------------------------------------------------
-desiredPoles = [-1+.637i -1-.637i];
+desiredPoles = [-1+.637i -1-.637i -4];
 controllerGain = acker(MatrixA,MatrixB,desiredPoles);
 disp('Controller Gain is ');
 disp(controllerGain);
@@ -68,14 +60,15 @@ newMatrixA = MatrixA - (MatrixB*controllerGain);
 newMatrixB = eye(3);
 newMatrixC = eye(3);
 newMatrixD = eye(3);
-initialX = [1 0];
+initialX = [1 0 0];
 timeT = 0:.1:5;
 mysys = ss(MatrixA,newMatrixB,newMatrixC,newMatrixD);
 x = initial(mysys, initialX,timeT);
-x1 = [1 0]*x';
-x2 = [0 1]*x';
+x1 = [1 0 0]*x';
+x2 = [0 1 0]*x';
+x3 = [0 0 1]*x';
 subplot(3,1,2);
-plot(timeT,x1,'r',timeT,x2,'g');
+plot(timeT,x1,'r',timeT,x2,'g',timeT,x3,'b');
 title('Response to initial Condition of State Variables Controller');
 xlabel('Time -->');
 ylabel('Magnitude -->');
