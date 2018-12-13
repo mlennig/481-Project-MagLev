@@ -1,0 +1,107 @@
+\documentclass[12pt]{report}
+\usepackage{amsmath}
+\begin{document}
+
+Linearized Equations of Motion:
+\begin{equation}
+m\ddot{y}_{1}^{*} + (k^{'}_{1} + k^{'}_{12})y_{1}^{*} - k^{'}_{12}y_{2}^{*} = k^{'}_{u_{1}}u^{*}_{1}
+\end{equation}
+
+\begin{equation}
+m\ddot{y}_{2}^{*} + (k^{'}_{12} + k^{'}_{2})y_{2}^{*} - k^{'}_{12}y_{1}^{*} = k^{'}_{u_{2}}u^{*}_{2}
+\end{equation}
+\newline
+Linearized/Calibrated Output of the Sensor:
+\begin{align}
+&y_{i_{cal}} =\dfrac{-107200000}{y_{i_{raw}}} + \dfrac{6920000}{\sqrt{y_{i_{raw}}}} -22700 -0.448y_{i_{raw}},\\ 
+&\text{where } y_{i_{raw}} \equiv \text{the raw sensor output.} 
+\end{align}
+
+\begin{equation}
+\dot{x}= Ax + BU(t)
+\end{equation}
+\begin{equation}
+y = Cx
+\end{equation}
+
+\begin{equation}
+det(sI - A) = 0
+\end{equation}
+\newline
+SISO, Location \#1, Linearized Actuator, Linearized Sensor:
+\begin{align} 
+\begin{split}
+\frac{y_{1}^{*}(s)}{u_{1}^{*}(s)} = \frac{826}{s^{2}}
+, \quad where \, u_{1}^{*}(s) &= u_{1}(s) - u_{1_{0}}(s)\\
+y_{1}^{*}(s) &= y_{1}(s) - y_{1_{0}}(s)\\
+y_{2}^{*}(s) &= y_{2}(s) - y_{2_{0}}(s)
+\end{split}
+\end{align}
+
+State Equations:
+\begin{align} 
+y_{1}^{*}(s) = \,&\dot{x}_{1} = x _{1} &\equiv \text{Magnet 1 Position} \\
+\dot{y}_{1}^{*}(s) = \,&\dot{x}_{2} = 826u _{2} &\equiv \text{Magnet 1 Velocity}\\
+&y = x _{1}
+\end{align}
+
+State Space Realization:
+\begin{align} 
+X =\begin{bmatrix}
+  y_{1}^{*} \\
+  \dot{y}_{1}^{*} \\
+\end{bmatrix},\,
+A =\begin{bmatrix}
+    0 &1\\
+   0 &0\\
+\end{bmatrix},\,
+B =\begin{bmatrix}
+    0\\
+   826\\
+\end{bmatrix},\,
+C =\begin{bmatrix}
+    1 &0\\
+\end{bmatrix}
+\end{align}
+\newline
+PID Controller:
+\begin{align}
+c(t) &= k_{P}e(t) + k_{I} \int e(t)dt + k_{D}\dfrac{de(t)}{dt}\\\nonumber
+\\
+C(s) & = \left[ k_{P} + \dfrac{k_{D}}{s} + k_{D}s\right]E(s)\\\nonumber
+\\
+\dfrac{C(s)}{E(s)} & = \dfrac{k_{D}s^{2} + k_{P}s +k_{I}} {s}\\\nonumber
+\\
+&=\dfrac{k_{D}\left(s^{2}+ \dfrac{k_{P}}{k_{D}}s + \dfrac{k_{I}}{k_{D}}\right)}{s}\\\nonumber
+\\
+k_{D}s &\equiv \text{ideal derivative}\\\nonumber
+\\
+\dfrac{k_{D}N}{1 + \dfrac{N}{s}} = \dfrac{k_{D}Ns}{s + N} &\equiv \text{filtered derivative, adds a pole at} -N 
+\end{align}
+
+Controller Design:
+\begin{align}
+\text{Let the desired settling time be less than 0.2 seconds.}\\
+\text{then }\tau &= 0.2 \text{ sec}\\
+\text{take }\zeta &= 1\\
+\text{we know }\zeta\omega_{n} &= \dfrac{1}{\tau}\\
+\omega_{n} &= \dfrac{1}{\zeta\tau}\\
+\omega_{n} &= \dfrac{1}{0.2}\\\nonumber
+\\
+\omega_{n} &= 5\\\nonumber
+\end{align}
+
+\begin{align}
+s^{2} + 2\zeta\omega_{n}s + \omega_{n}^{2}\\\nonumber
+\\
+s^{2} + (2)(1)(5)s + 5^{2}\\\nonumber
+\\
+s^{2} + 10s + 25
+\end{align}
+
+\begin{align}
+p_{1,2} &= -\zeta\omega_{n} \mp i\omega_{n}\sqrt{1 - \zeta^{2}}\\
+p_{1,2} &= -(1)(5) \mp i(5)\sqrt{1-(1)^{2}}\\
+p_{1} &= -5
+\end{align}
+\end{document}

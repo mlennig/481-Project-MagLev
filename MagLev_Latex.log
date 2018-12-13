@@ -1,0 +1,132 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840) (preloaded format=pdflatex 2018.12.9)  13 DEC 2018 12:17
+entering extended mode
+**./MagLev_Latex.tex
+(MagLev_Latex.tex
+LaTeX2e <2018-04-01> patch level 5
+("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/report.cls"
+Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
+("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/size12.clo"
+File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count80
+\c@chapter=\count81
+\c@section=\count82
+\c@subsection=\count83
+\c@subsubsection=\count84
+\c@paragraph=\count85
+\c@subparagraph=\count86
+\c@figure=\count87
+\c@table=\count88
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsmath/amsmath.
+sty"
+Package: amsmath 2017/09/02 v2.17a AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+
+("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsmath/amstext.
+sty"
+Package: amstext 2000/06/29 v2.01 AMS text
+
+("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsmath/amsgen.s
+ty"
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks14
+\ex@=\dimen103
+))
+("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsmath/amsbsy.s
+ty"
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen104
+)
+("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsmath/amsopn.s
+ty"
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count89
+LaTeX Info: Redefining \frac on input line 213.
+\uproot@=\count90
+\leftroot@=\count91
+LaTeX Info: Redefining \overline on input line 375.
+\classnum@=\count92
+\DOTSCASE@=\count93
+LaTeX Info: Redefining \ldots on input line 472.
+LaTeX Info: Redefining \dots on input line 475.
+LaTeX Info: Redefining \cdots on input line 596.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen105
+LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
+\macc@depth=\count94
+\c@MaxMatrixCols=\count95
+\dotsspace@=\muskip10
+\c@parentequation=\count96
+\dspbrk@lvl=\count97
+\tag@help=\toks15
+\row@=\count98
+\column@=\count99
+\maxfields@=\count100
+\andhelp@=\toks16
+\eqnshift@=\dimen106
+\alignsep@=\dimen107
+\tagshift@=\dimen108
+\tagwidth@=\dimen109
+\totwidth@=\dimen110
+\lineht@=\dimen111
+\@envbody=\toks17
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks18
+LaTeX Info: Redefining \[ on input line 2817.
+LaTeX Info: Redefining \] on input line 2818.
+) (MagLev_Latex.aux)
+\openout1 = `MagLev_Latex.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+ [1
+
+{/Users/miriamlennig/Library/Application Support/MiKTeX/texmfs/data/pdftex/conf
+ig/pdftex.map}] [2] [3] (MagLev_Latex.aux) ) 
+Here is how much of TeX's memory you used:
+ 856 strings out of 494889
+ 10245 string characters out of 3177620
+ 77822 words of memory out of 3000000
+ 4542 multiletter control sequences out of 15000+200000
+ 7050 words of font info for 26 fonts, out of 3000000 for 9000
+ 0 hyphenation exceptions out of 8191
+ 27i,15n,21p,226b,187s stack positions out of 5000i,500n,10000p,200000b,50000s
+</Library/Application Support/MiKTe
+X/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.pfb></Library/Applicatio
+n Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi12.pfb></Lib
+rary/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/c
+mmi6.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public
+/amsfonts/cm/cmmi8.pfb></Library/Application Support/MiKTeX/texmfs/install/font
+s/type1/public/amsfonts/cm/cmr12.pfb></Library/Application Support/MiKTeX/texmf
+s/install/fonts/type1/public/amsfonts/cm/cmr6.pfb></Library/Application Support
+/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr8.pfb></Library/Applic
+ation Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
+/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/
+cm/cmsy6.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/pu
+blic/amsfonts/cm/cmsy8.pfb>
+Output written on MagLev_Latex.pdf (3 pages, 105127 bytes).
+PDF statistics:
+ 52 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+
