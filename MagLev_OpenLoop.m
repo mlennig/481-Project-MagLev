@@ -1,4 +1,11 @@
-% i. Open Loop system characterization, identification and representation.
+% Open Loop system characterization, identification and representation.
+% 1. O.C.F
+% 2. C.C.F
+% 3. Impulse Response
+% 4. Step Response
+% 5. Bode Plot Open Loop 
+% 6. Root Locus Open Loop 
+
 
 % State Equations 
 % SISO, Location #1, Linearized Actuator, Linearized Sensor
