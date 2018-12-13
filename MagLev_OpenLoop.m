@@ -2,13 +2,8 @@
 % 1. State Space Representation
 % 2. Transfer Function of Open Loop System
 % 3. O.C.F, C.C.F, J.C.F.
-% TODO
-% 1. O.C.F
-% 2. C.C.F
-% 3. Impulse Response
-% 4. Step Response
-% 5. Bode Plot Open Loop 
-% 6. Root Locus Open Loop 
+% 4. Impulse Response & Step Response
+% 5. Bode Plot & Root Locus 
 
 % 1. State Space Representation
 % SISO, Location #1, Linearized Actuator, Linearized Sensor
@@ -48,32 +43,29 @@ unco = length(A) - rank(Co)
 % Create Jordan form of matrix A
 JA = jordan(A)
 
-
-
-figure(1);
-plot(t,y);
-title('Open-Loop Response to Non-Zero Initial Condition');
-xlabel('Time (sec)');
-ylabel('Magnet Position (cm)');
-
-
-
-
-figure (2)
+% 4. Impulse Response & Step Response
+% Impulse Response
+figure (1)
 subplot(2,1,1)
-bodeplot(sys1)
-title('Bode Plot of Open-Loop Linearized Magnetic Levitation System');
-subplot(2,1,2)
-rlocusplot(sys1)
-title('Root Locus of Open-Loop Linearized Magnetic Levitation System');
-
-figure(3)
-subplot(2,1,1)
-step(sys1)
-title('Step Reponse of Open-Loop Linearized Magnetic Levitation System');
-subplot(2,1,2)
-impulse(sys1)
+impulse(ss_ol)
 title('Impulse Reponse of Open-Loop Linearized Magnetic Levitation System');
 
-%sisotool(sys)
+% Step Response
+subplot(2,1,2)
+step(ss_ol)
+title('Step Reponse of Open-Loop Linearized Magnetic Levitation System');
+
+% 5. Bode Plot & Root Locus 
+% Bode Plot
+figure (2)
+subplot(2,1,1)
+bodeplot(ss_ol)
+title('Bode Plot of Open-Loop Linearized Magnetic Levitation System');
+
+% Root Locus
+subplot(2,1,2)
+rlocusplot(ss_ol)
+title('Root Locus of Open-Loop Linearized Magnetic Levitation System');
+
+
 
