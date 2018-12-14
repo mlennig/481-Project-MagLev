@@ -1,5 +1,6 @@
 \documentclass[12pt]{report}
 \usepackage{amsmath}
+\usepackage{amssymb}
 \begin{document}
 
 Linearized Equations of Motion:
@@ -78,30 +79,50 @@ k_{D}s &\equiv \text{ideal derivative}\\\nonumber
 \\
 \dfrac{k_{D}N}{1 + \dfrac{N}{s}} = \dfrac{k_{D}Ns}{s + N} &\equiv \text{filtered derivative, adds a pole at} -N 
 \end{align}
-
+\newline
 Controller Design:
 \begin{align}
-\text{Let the desired settling time be less than 0.2 seconds.}\\
-\text{then }\tau &= 0.2 \text{ sec}\\
-\text{take }\zeta &= 1\\
+\text{Overshoot} = \text{O.S.} &= \mathrm{e}^{-\left(\dfrac{\zeta\pi}{\sqrt{1 - \zeta^{2}}}\right)}\\
+\text{Let O.S} &= 10\%\\
+10 &= \mathrm{e}^{-\left(\dfrac{\zeta\pi}{\sqrt{1 - \zeta^{2}}}\right)}\\
+ln(10) &= ln\left(\mathrm{e}^{-\left(\dfrac{\zeta\pi}{\sqrt{1 - \zeta^{2}}}\right)}\right)\\
+ln(10) &= -\left(\dfrac{\zeta\pi}{\sqrt{1 - \zeta^{2}}}\right)\\
+ln^{2}(10) &= \dfrac{\zeta^{2}\pi^{2}}{1 - \zeta^{2}}\\
+ln^{2}(10)(1 - \zeta^{2}) &= \zeta^{2}\pi^{2}\\
+ln^{2}(10)- ln^{2}(10)\zeta^{2} &= \zeta^{2}\pi^{2}\\
+ln^{2}(10) &= \zeta^{2}\pi^{2} + ln^{2}(10)\zeta^{2}\\
+ln^{2}(10) &= \zeta^{2}[\pi^{2} + ln^{2}(10)]\\
+\dfrac{ln^{2}(10)}{\pi^{2} + ln^{2}(10)} &= \zeta^{2}\\
+\dfrac{ln(10)}{\sqrt{\pi^{2} + ln^{2}(10)}} &= \zeta\\
+\zeta &\doteq 0.5912\\\nonumber
+\therefore &\text{ the system will be underdamped.}
+\end{align}
+
+\begin{align}
+\nonumber
+\text{Let the desired settling time be less than 1 second.}\\\nonumber
+\text{then }\tau &= 1 \text{ sec}\\\nonumber
+\text{take }\zeta &= 0.5912\\
 \text{we know }\zeta\omega_{n} &= \dfrac{1}{\tau}\\
 \omega_{n} &= \dfrac{1}{\zeta\tau}\\
-\omega_{n} &= \dfrac{1}{0.2}\\\nonumber
+\omega_{n} &= \dfrac{1}{(1)(0.5912)}\\\nonumber
 \\
-\omega_{n} &= 5\\\nonumber
+\omega_{n} &= 1.692\\\nonumber
 \end{align}
 
 \begin{align}
 s^{2} + 2\zeta\omega_{n}s + \omega_{n}^{2}\\\nonumber
 \\
-s^{2} + (2)(1)(5)s + 5^{2}\\\nonumber
+s^{2} + (2)(0.5912)(1.692)s + 1.692^{2}\\\nonumber
 \\
-s^{2} + 10s + 25
+s^{2} + 2.0006s + 9.7656
 \end{align}
 
 \begin{align}
-p_{1,2} &= -\zeta\omega_{n} \mp i\omega_{n}\sqrt{1 - \zeta^{2}}\\
-p_{1,2} &= -(1)(5) \mp i(5)\sqrt{1-(1)^{2}}\\
-p_{1} &= -5
+s_{1,2} &= -\zeta\omega_{n} \mp i\omega_{n}\sqrt{1 - \zeta^{2}}\\
+s_{1,2} &= -(0.5912)(1.692) \mp i(1.692)\sqrt{1-(0.5912)^{2}}\\
+s_{1,2} &= -1.0003 \mp i1.692\sqrt{0.6505}\\
+s_{1} &\doteq -1 - i1.365\\
+s_{2} &\doteq -1 + i1.365
 \end{align}
 \end{document}

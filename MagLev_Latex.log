@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840) (preloaded format=pdflatex 2018.12.9)  13 DEC 2018 12:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840) (preloaded format=pdflatex 2018.12.9)  13 DEC 2018 22:42
 entering extended mode
 **./MagLev_Latex.tex
 (MagLev_Latex.tex
@@ -84,49 +84,74 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
 \mathdisplay@stack=\toks18
 LaTeX Info: Redefining \[ on input line 2817.
 LaTeX Info: Redefining \] on input line 2818.
-) (MagLev_Latex.aux)
+)
+("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/amssymb
+.sty"
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/amsfont
+s.sty"
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (MagLev_Latex.aux)
 \openout1 = `MagLev_Latex.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 3.
-LaTeX Font Info:    ... okay on input line 3.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 3.
-LaTeX Font Info:    ... okay on input line 3.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 3.
-LaTeX Font Info:    ... okay on input line 3.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 3.
-LaTeX Font Info:    ... okay on input line 3.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 3.
-LaTeX Font Info:    ... okay on input line 3.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 3.
-LaTeX Font Info:    ... okay on input line 3.
- [1
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Try loading font information for U+msa on input line 7.
+
+("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/umsa.fd
+"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 7.
+
+("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/umsb.fd
+"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [1
 
 {/Users/miriamlennig/Library/Application Support/MiKTeX/texmfs/data/pdftex/conf
-ig/pdftex.map}] [2] [3] (MagLev_Latex.aux) ) 
+ig/pdftex.map}] [2] [3] [4] (MagLev_Latex.aux) ) 
 Here is how much of TeX's memory you used:
- 856 strings out of 494889
- 10245 string characters out of 3177620
- 77822 words of memory out of 3000000
- 4542 multiletter control sequences out of 15000+200000
- 7050 words of font info for 26 fonts, out of 3000000 for 9000
+ 1140 strings out of 494889
+ 13581 string characters out of 3177620
+ 79429 words of memory out of 3000000
+ 4809 multiletter control sequences out of 15000+200000
+ 8285 words of font info for 32 fonts, out of 3000000 for 9000
  0 hyphenation exceptions out of 8191
- 27i,15n,21p,226b,187s stack positions out of 5000i,500n,10000p,200000b,50000s
-</Library/Application Support/MiKTe
-X/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.pfb></Library/Applicatio
-n Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi12.pfb></Lib
-rary/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/c
-mmi6.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public
-/amsfonts/cm/cmmi8.pfb></Library/Application Support/MiKTeX/texmfs/install/font
-s/type1/public/amsfonts/cm/cmr12.pfb></Library/Application Support/MiKTeX/texmf
-s/install/fonts/type1/public/amsfonts/cm/cmr6.pfb></Library/Application Support
-/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr8.pfb></Library/Applic
-ation Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
-/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/
-cm/cmsy6.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/pu
-blic/amsfonts/cm/cmsy8.pfb>
-Output written on MagLev_Latex.pdf (3 pages, 105127 bytes).
+ 27i,15n,27p,230b,187s stack positions out of 5000i,500n,10000p,200000b,50000s
+</Library/Application Support/M
+iKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.pfb></Library/Applic
+ation Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cmextra/cmex8.p
+fb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfo
+nts/cm/cmmi12.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/typ
+e1/public/amsfonts/cm/cmmi6.pfb></Library/Application Support/MiKTeX/texmfs/ins
+tall/fonts/type1/public/amsfonts/cm/cmmi8.pfb></Library/Application Support/MiK
+TeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr12.pfb></Library/Applicati
+on Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr6.pfb></Libr
+ary/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cm
+r8.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/a
+msfonts/cm/cmsy10.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts
+/type1/public/amsfonts/cm/cmsy6.pfb></Library/Application Support/MiKTeX/texmfs
+/install/fonts/type1/public/amsfonts/cm/cmsy8.pfb></Library/Application Support
+/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on MagLev_Latex.pdf (4 pages, 125195 bytes).
 PDF statistics:
- 52 PDF objects out of 1000 (max. 8388607)
+ 63 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
