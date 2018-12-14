@@ -40,12 +40,9 @@ sisotool(ss_ol)
 %Exported Controller Designs
 PIDcontroller
 TFPID
-tryhard=PIDcontroller/0.048798
-PID=pid(tryhard)
-%PID=pid(PIDcontroller/0.048798)
-%[Kp1,Ki1,Kd1,Tf1] = piddata(PIDcontroller)
-
 PDcontroller
 TFPD
+PID=pid(PIDcontroller)
 PD=pid(PDcontroller)
-[Kp2,Ki2,Kd2,Tf2] = piddata(PD)
+[Kp,Ki,Kd,Tf] = piddata(PIDcontroller)
+[Kp,Ki,Kd,Tf] = piddata(PD)
