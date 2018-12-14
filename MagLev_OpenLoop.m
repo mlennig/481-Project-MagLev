@@ -53,8 +53,9 @@ Ao
 Toinv * A * To
 
 % Observable Forms in State Space Representation
-ss_ol_obs = ss(Ao,Bo,Co,0);
+ss_ol_obs = ss(Ao,Bo,Co,0)
 
+%C.C.F
 % Compute the controllability matrix 
 Cx = ctrb(A,B)
 % Determine the number of uncontrollable states
@@ -73,9 +74,10 @@ Cc = C * Tc
 % Check equality 
 Ac
 Tcinv * A * Tc
+isequal(Ac,Tcinv * A * Tc)
 
 % Controllable Forms in State Space Representation
-ss_ol_ctrl = ss(Ac,Bc,Cc,0);
+ss_ol_ctrl = ss(Ac,Bc,Cc,0)
 
 % Create Jordan form of matrix A
 JA = jordan(A)
