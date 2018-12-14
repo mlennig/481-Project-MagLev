@@ -38,11 +38,13 @@ poles = eig(A)
 
 sisotool(ss_ol)
 %Exported Controller Designs
+%Design 1 - PID
 PIDcontroller
 TFPID
+%PID=pid(PIDcontroller/0.048798)
+%[Kp1,Ki1,Kd1,Tf1] = piddata(PIDcontroller)
+
+%Design 2 - PD
 PDcontroller
 TFPD
-PID=pid(PIDcontroller)
-PD=pid(PDcontroller)
-[Kp,Ki,Kd,Tf] = piddata(PIDcontroller)
-[Kp,Ki,Kd,Tf] = piddata(PD)
+[Kp1,Ki1,Kd1,Tf2] = piddata(PDcontroller)
