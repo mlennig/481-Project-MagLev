@@ -1,15 +1,18 @@
 % PID Design
-% 1. Design Criteria
-%   a. Transient Design Specification
-%   b. Steady-state Design Specification
-% 2. Design PID
-% 3. Introduction of Noise 
-% 4. Step Response
-% 5. Square Wave Response
-% 6. Sinusoidal Response 
+% Design Criteria
+%   a. Transient Design Specification:  < 10% overshoot
+%   b. Steady-state Design Specification: Settling Time < 1 second
+% Design PID
+% Introduction of Noise 
+% Step Response
+% Square Wave Response
+% Sinusoidal Response 
 
 
-% SISO, Location #1, Linearized Actuator, Linearized Sensor
+      
+
+
+%%%%%%%%%%%%% SISO, Location #1, Linearized Actuator, Linearized Sensor %%%%%%%%%%%%% 
 % p.133 3a)
 A = [0 1; 0 0];
 B = [0; 826];
@@ -83,8 +86,6 @@ subplot(3,2,6)
 [u_sin,t] = gensig('sin',4,10,0.1);
 lsim(TFPD,u_sin,t)
 title('Sinusoidal Response of System with PD Controller')
-
-
 
 %Design 2 - PD
 PDcontroller
