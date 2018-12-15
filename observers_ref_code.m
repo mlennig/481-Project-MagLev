@@ -22,7 +22,7 @@ disp('Observer Gain Matrix');
 disp(observerGain);
 % New System with observer --------------------------------------------
 newMatrixA = MatrixA - (observerGain*MatrixC);
-newMatrixB = eye(rank(MatrixA));
+newMatrixB = eye(rank(MatrixA))
 newMatrixC = eye(rank(MatrixA));
 newMatrixD = eye(rank(MatrixA));
 mysys = ss(newMatrixA,newMatrixB,newMatrixC,newMatrixD);
