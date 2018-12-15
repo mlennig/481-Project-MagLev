@@ -14,6 +14,8 @@ ss_ol = ss(A,B,C,0);
 TFOL = tf(ss_ol)
 
 desiredPoles = [-20 + 20i -20 - 20i]
+K = place(A,B,desiredPoles);
+Nbar = rscale(ss_ol,K)
 
 % Observer Design Is Possible --------------------------------------------
 observerGain = acker(A.',C.', desiredPoles.').';
