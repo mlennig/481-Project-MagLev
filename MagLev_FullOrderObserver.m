@@ -11,91 +11,82 @@ C = [1 0];
 
 % Create state-space model 
 ss_ol = ss(A,B,C,0);
+TFOL = tf(ss_ol)
 
 desiredPoles = [-20 + 20i -20 - 20i]
 
-% Observer Design Possible --------------------------------------------
+% Observer Design Is Possible --------------------------------------------
 observerGain = acker(A.',C.', desiredPoles.').';
 disp('Observer Gain Matrix');
 disp(observerGain);
+G = observerGain;
 % New System with observer --------------------------------------------
-newA = A - (observerGain*C);
-newB = eye(rank(A));
-newC = eye(rank(A));
-mysys = ss(newA,newB,newC,0);
-mysys;
-timeT = 0:.1:2;
-initialX = [1 0];
-x = initial(mysys,initialX,timeT);
-x1 = [1 0]*x';
-x2 = [0 1]*x';
-subplot(3,1,1);
-plot(timeT,x1,'r',timeT,x2,'g');
-title('Response to initial Condition of State Variables Observer');
-xlabel('Time -->');
-ylabel('Magnitude -->');
-disp('New System Matrix A');
-disp(newA);
-else
-disp('System is Unobservable');
-% No observer design possible -----------------------------------------
-end
-%--------------------------------------------------------------------------
-% Now first we need to make controller with given specification of 20.8%
-% overshoot and 4 seconds settling time. For such a controller we
-% calculated the required poles to be
-% [-1+.637i -1-.637i -4]
-%--------------------------------------------------------------------------
-% So ----------------------------------------------------------------------
-% we already have A -------------------------------------------------
-desiredPoles = [-1+.637i -1-.637i -4];
-controllerGain = acker(A,B,desiredPoles);
-disp('Controller Gain is ');
-disp(controllerGain);
-newA = A - (B*controllerGain);
-newB = eye(3);
-newC = eye(3);
-newD = eye(3);
-initialX = [1 0 0];
-timeT = 0:.1:5;
-mysys = ss(A,newB,newC,newD);
-x = initial(mysys, initialX,timeT);
-x1 = [1 0 0]*x';
-x2 = [0 1 0]*x';
-x3 = [0 0 1]*x';
-subplot(3,1,2);
-plot(timeT,x1,'r',timeT,x2,'g',timeT,x3,'b');
-title('Response to initial Condition of State Variables Controller');
-xlabel('Time -->');
-ylabel('Magnitude -->');
-%--------------------------------------------------------------------------
-% Now finding the reduced order observer that is 10 times faster than the
-% designed controller.
-% With this criteria in mind we can get the Aaa, Ab and so on
-% and the desired observer poles becomes -10+6.377i -10-6.477i
-%--------------------------------------------------------------------------
-% So ----------------------------------------------------------------------
-Aaa = [0];
-Aab = [1 0];
-Aba = [0;-10];
-Abb = [0 1;-17 -8];
-desiredObserverPoles = [-10+6.377i -10-6.377i];
-observerGain = acker(Abb.',Aab.',desiredObserverPoles.').'
-newAAbb = Abb - (observerGain*Aab);
-newB = eye(2);
-newC = eye(2);
-newD = eye(2);
-mysys = ss(newAAbb,newB,newC,newD);
-initialX = [1 0];
-timeT = 0:.1:2;
-x = initial(mysys,initialX,timeT);
-x1 = [1 0]*x';
-x2 = [0 1]*x';
-subplot(3,1,3);
-plot(timeT,x1,'r',timeT,x2,'g');
-title('Response to initial Condition of State Variables Reduced Observer');
-xlabel('Time -->');
-ylabel('Magnitude -->');
-% -------------------------------------------------------------------------
-% End of Program. Created By Siddharth Kaul
-% -------------------------------------------------------------------------
+At = [ A-B*K             B*K
+       zeros(size(A))    A-G*C ];
+
+Bt = [    B*Nbar
+       zeros(size(B)) ];
+
+Ct = [ C    zeros(size(C)) ];
+
+sys_cl_FullObs = ss(At,Bt,Ct,0);
+
+% Generate transfer function of controller-estimator
+TFFO = tf(sys_cl_FullObs)
+
+% Transfer function of system with full order controller estimator: 
+% Gec * Gp / (1 + Gec*Gp)
+TFFO_sys = TFFO*TFFS/(1 + TFFO*TFFS)
+
+% 11. Step Response, Square Wave Response, Sinusoidal Response, Transfer Function of Controller 
+% Obtain Step Response of system with Controller-Estimator (Full Observer)
+figure(1)
+subplot(3,2,1)
+step(TFFO_sys)
+title('Step Response of System with Controller-Estimator (Full Order)')
+
+% Obtain Step Response of system with Controller-Estimator (Full Observer)
+subplot(3,2,3)
+[u_square,t] = gensig('square',4,10,0.0001);
+lsim(TFFO_sys,u_square,t)
+title('Square Wave Response of System with Controller-Estimator (Full Order)')
+
+% Obtain Step Response of system with Controller-Estimator (Full Observer)
+subplot(3,2,5)
+[u_sin,t] = gensig('sin',4,10,0.001);
+lsim(TFFO_sys,u_sin,t)
+title('Sinusoidal Response of System with Controller-Estimator (Full Order)')
+
+% Noise Injection ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+% Obtain Step Response of system with Controller-Estimator (Full Observer) with NOISE
+subplot(3,2,2)
+t_step = 0:0.01:0.6;
+u_step = 0.001*ones(size(t_step));
+% Inject white noise into the system
+y_step = awgn(u_step,15,'measured');
+lsimplot(TFFO_sys,y_step,t_step)
+title({'\fontsize{16}PID Controller';'\fontsize{11}Step response with SNR 15'})
+
+% Obtain Square Wave Response of system with Controller-Estimator (Full
+% Observer) with NOISE
+subplot(3,2,4)
+[u_square,t] = gensig('square',4,10,0.1);
+% Inject white noise into the system
+y_square = awgn(u_square,15,'measured');
+lsimplot(TFFO_sys,y_square,t)
+%plot(t,[u_square y_square])
+title('Square Wave Response with SNR 15')
+
+% Obtain Sinusoidal Response of system with Controller-Estimator (Full
+% Observer) with NOISE
+subplot(3,2,6)
+[u_sin,t] = gensig('sin',4,10,0.1);
+% Inject white noise into the system
+y_sin = awgn(u_sin,15,'measured');
+lsimplot(TFFO_sys,y_sin,t)
+%plot(t,[u_sin y])
+title('Sinusoidal Response with SNR 15')
+
+
+

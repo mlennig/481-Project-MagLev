@@ -9,9 +9,6 @@
 % Sinusoidal Response 
 
 
-      
-
-
 %%%%%%%%%%%%% SISO, Location #1, Linearized Actuator, Linearized Sensor %%%%%%%%%%%%% 
 % p.133 3a)
 A = [0 1; 0 0];

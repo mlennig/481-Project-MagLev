@@ -61,6 +61,7 @@ p2 = -20 - 20i;
 % which will provide the desired 
 % closed-loop poles. 
 K = place(A,B,[p1 p2]);
+Nbar = rscale(ss_ol,K)
 
 sys_cl = ss(A-B*K,B,C,0);   % Generate closed-loop system
 TFFS = tf(sys_cl)           % Obtain transfer function of the closed-loop system     
@@ -82,5 +83,5 @@ title('Square Wave Response of System with Full-State Feedback Controller')
 subplot(3,1,3)
 [u_sin,t] = gensig('sin',4,10,0.1);
 lsim(TFFS,u_sin,t)
-title('Sinusoidal Response of System with Full-State Feedback Controllerr')
+title('Sinusoidal Response of System with Full-State Feedback Controller')
 
