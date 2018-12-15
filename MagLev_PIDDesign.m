@@ -36,108 +36,125 @@ poles = eig(A)
         % less than 10% overshoot
         % Settling time of < 1 second
 
+% Control System Designer used to meet criteria
 %sisotool(ss_ol)
-%Exported Controller Designs
-%Design 1 - PID
-PIDcontroller
-TFPID
+% Exported Controller Designs
+load('TFPID_file.mat')
+load('TFPID_file.mat')
+load('PDController_file.mat')
+load('PIDController_file.mat')
 
-% 7. Design 1 ? PID: Step, Square Wave, and Sinusoidal Responses
+%Design 1 - PID
+%controller
+PIDcontroller;
+% TF of system
+TFPID;
+
+%Design 2 - PD
+%controller
+PDcontroller;
+% TF of system
+TFPD;
+%Paralelle Form
+[Kp1,Ki1,Kd1,Tf2] = piddata(PDcontroller);
+
+% 7. Step, Square Wave, and Sinusoidal Responses to controllers
+
+% Design #1 - PID: 
+
 % Obtain Step Response of system with PID 
 figure(1)
+%sgtitle('Classical Controllers')
 subplot(3,2,1)
 step(TFPID)
-title('Step Response of System with PID Controller')
+title({'\fontsize{16}PID Controller';'\fontsize{11}Step Response'})
 
 % Obtain Square Wave Response of system with PID
 subplot(3,2,3)
 [u_square,t] = gensig('square',4,10,0.1);
-lsim(TFPID,u_square,t)
-title('Square Wave Response of System with PID Controller')
+lsimplot(TFPID,u_square,t)
+title('Square Wave Response')
 
 % Obtain Sinusoidal Response of system with PID 
 subplot(3,2,5)
 [u_sin,t] = gensig('sin',4,10,0.1);
-lsim(TFPID,u_sin,t)
-title('Sinusoidal Response of System with PID Controller')
+lsimplot(TFPID,u_sin,t)
+title('Sinusoidal Response')
 
-%Design 2 - PD
-PDcontroller
-TFPD
-[Kp1,Ki1,Kd1,Tf2] = piddata(PDcontroller)
-
-% 7. Design 2 ? PD: Step, Square Wave, and Sinusoidal Responses
-% Obtain Step Response of system with PID 
+%
+% Design #2 - PD: 
+% Obtain Step Response of system with PD 
 subplot(3,2,2)
 step(TFPD)
-title('Step Response of System with PD Controller')
+title({'\fontsize{16}PD Controller';'\fontsize{11}Step Response'})
 
 % Obtain Square Wave Response of system with PID
 subplot(3,2,4)
 [u_square,t] = gensig('square',4,10,0.1);
-lsim(TFPD,u_square,t)
-title('Square Wave Response of System with PD Controller')
+lsimplot(TFPD,u_square,t)
+title('Square Wave Response')
 
 % Obtain Sinusoidal Response of system with PID 
 subplot(3,2,6)
 [u_sin,t] = gensig('sin',4,10,0.1);
-lsim(TFPD,u_sin,t)
-title('Sinusoidal Response of System with PD Controller')
+lsimplot(TFPD,u_sin,t)
+title('Sinusoidal Response')
 
+% 8. Noise Injection ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-%Design 2 - PD
-PDcontroller
-TFPD
-[Kp1,Ki1,Kd1,Tf2] = piddata(PDcontroller)
-
-% 7. Design 2 ? PD: Step, Square Wave, and Sinusoidal Responses
-% Obtain Step Response of system with PID 
-subplot(3,2,2)
-step(TFPD)
-title('Step Response of System with PD Controller')
-
-% Obtain Square Wave Response of system with PID
-subplot(3,2,4)
-[u_square,t] = gensig('square',4,10,0.1);
-lsim(TFPD,u_square,t)
-title('Square Wave Response of System with PD Controller')
-
-% Obtain Sinusoidal Response of system with PID 
-subplot(3,2,6)
-[u_sin,t] = gensig('sin',4,10,0.1);
-lsim(TFPD,u_sin,t)
-title('Sinusoidal Response of System with PD Controller')
-
-
-% 8. Noise Injection
-
-% Design 1 ? PID: Step, Square Wave, and Sinusoidal Responses
-% Obtain Step Response of system with PID 
+% Design 1 - PID: Step, Square Wave, and Sinusoidal Responses
+% Obtain Step Response of system and PID with NOISE
 figure(2)
+%sgtitle('Noise Resistance - Classical controller')
 subplot(3,2,1)
-t = 0:0.01:10;
-u_step = 0.001*ones(size(t));
+t_step = 0:0.01:0.6;
+u_step = 0.001*ones(size(t_step));
 % Inject white noise into the system
-y_step = awgn(u_step,10,'measured');
-plot(t,[u_step y])
-legend('Original Signal','Signal with AWGN')
-title('Step Response of System with PID Controller')
+y_step = awgn(u_step,15,'measured');
+lsimplot(TFPID,y_step,t_step)
+title({'\fontsize{16}PID Controller';'\fontsize{11}Step response with SNR 15'})
 
 % Obtain Square Wave Response of system with PID
 subplot(3,2,3)
 [u_square,t] = gensig('square',4,10,0.1);
 % Inject white noise into the system
-y_square = awgn(u_square,10,'measured');
-plot(t,[u_square y])
-legend('Original Signal','Signal with AWGN')
-title('Square Wave Response of System with PID Controller')
+y_square = awgn(u_square,15,'measured');
+lsimplot(TFPID,y_square,t)
+%plot(t,[u_square y_square])
+title('Square Wave Response with SNR 15')
 
 % Obtain Sinusoidal Response of system with PID 
 subplot(3,2,5)
 [u_sin,t] = gensig('sin',4,10,0.1);
 % Inject white noise into the system
-y_sin = awgn(u_sin,10,'measured');
-plot(t,[u_sin y])
-legend('Original Signal','Signal with AWGN')
-title('Sinusoidal Response of System with PID Controller')
+y_sin = awgn(u_sin,15,'measured');
+lsimplot(TFPID,y_sin,t)
+%plot(t,[u_sin y])
+title('Sinusoidal Response with SNR 15')
+
+%
+% Design #2 - PD: 
+% Step with PD 
+subplot(3,2,2)
+t_step = 0:0.01:0.6;
+u_step = 0.001*ones(size(t_step));
+% Inject white noise into the system
+y_step = awgn(u_step,15,'measured');
+lsimplot(TFPD,y_step,t_step)
+title({'\fontsize{16}PD Controller';'\fontsize{11}Step response with SNR 15'})
+
+% Square with PD
+subplot(3,2,4)
+[u_square,t] = gensig('square',4,10,0.1);
+% Inject white noise into the system
+y_square = awgn(u_square,15,'measured');
+lsimplot(TFPD,y_square,t)
+title('Square Wave Response with SNR 15')
+
+% Sin. Resp with PD
+subplot(3,2,6)
+[u_sin,t] = gensig('sin',4,10,0.1);
+% Inject white noise into the system
+y_sin = awgn(u_sin,15,'measured');
+lsimplot(TFPD,y_sin,t)
+title('Sinusoidal Response SNR 15')
