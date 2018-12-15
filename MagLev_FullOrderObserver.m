@@ -17,12 +17,13 @@ desiredPoles = [-20 + 20i -20 - 20i]
 K = place(A,B,desiredPoles);
 Nbar = rscale(ss_ol,K)
 
-% Observer Design Is Possible --------------------------------------------
+% Find Observer Gain G
 observerGain = acker(A.',C.', desiredPoles.').';
 disp('Observer Gain Matrix');
 disp(observerGain);
 G = observerGain;
-% New System with observer --------------------------------------------
+
+% Calculate New System with Observer
 At = [ A-B*K             B*K
        zeros(size(A))    A-G*C ];
 
