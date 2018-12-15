@@ -46,19 +46,19 @@ TFFO_sys = TFFO*TFFS/(1 + TFFO*TFFS)
 figure(1)
 subplot(3,2,1)
 step(TFFO_sys)
-title('Step Response of System with Controller-Estimator (Full Order)')
-
+sgtitle('Full Order Observer')
+title('Step Response')
 % Obtain Step Response of system with Controller-Estimator (Full Observer)
 subplot(3,2,3)
 [u_square,t] = gensig('square',4,10,0.0001);
 lsim(TFFO_sys,u_square,t)
-title('Square Wave Response of System with Controller-Estimator (Full Order)')
+title('Square Wave Response')
 
 % Obtain Step Response of system with Controller-Estimator (Full Observer)
 subplot(3,2,5)
 [u_sin,t] = gensig('sin',4,10,0.001);
 lsim(TFFO_sys,u_sin,t)
-title('Sinusoidal Response of System with Controller-Estimator (Full Order)')
+title('Sinusoidal Response')
 
 % Noise Injection ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -69,7 +69,7 @@ u_step = 0.001*ones(size(t_step));
 % Inject white noise into the system
 y_step = awgn(u_step,15,'measured');
 lsimplot(TFFO_sys,y_step,t_step)
-title({'\fontsize{16}PID Controller';'\fontsize{11}Step response with SNR 15'})
+title({'\fontsize{14}SNR 15';'\fontsize{11}Step response'})
 
 % Obtain Square Wave Response of system with Controller-Estimator (Full
 % Observer) with NOISE
@@ -79,7 +79,7 @@ subplot(3,2,4)
 y_square = awgn(u_square,15,'measured');
 lsimplot(TFFO_sys,y_square,t)
 %plot(t,[u_square y_square])
-title('Square Wave Response with SNR 15')
+title('Square Wave Response')
 
 % Obtain Sinusoidal Response of system with Controller-Estimator (Full
 % Observer) with NOISE
@@ -89,7 +89,7 @@ subplot(3,2,6)
 y_sin = awgn(u_sin,15,'measured');
 lsimplot(TFFO_sys,y_sin,t)
 %plot(t,[u_sin y])
-title('Sinusoidal Response with SNR 15')
+title('Sinusoidal Response')
 
 
 
